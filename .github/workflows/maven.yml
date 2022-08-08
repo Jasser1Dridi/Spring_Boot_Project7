@@ -29,6 +29,14 @@ jobs:
       run: mvn clean
     - name: maven clean
       run: mvn validate
+      
+  publish:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    needs: build
+    steps :
+     - name: Print the name of this great yml 
+       run: echo Jasser Foking Dridi
   deletePrBranch:
    runs-on: ubuntu-latest
    steps:

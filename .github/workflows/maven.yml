@@ -39,9 +39,8 @@ jobs:
    if: github.event_name == 'push'
    needs: publish
    steps:
-    - name: Delete pr-* branches
-      uses: dawidd6/action-delete-branch@v3
-      with:
-       github_token: ${{github.token}}
-       prefix: jasser
+      - name: delete branch
+        uses: SvanBoxel/delete-merged-branch@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
  

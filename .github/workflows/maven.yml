@@ -6,8 +6,6 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "buildMaven" ]
-  pull_request:
-    branches: [ "buildMaven" ]
 
 jobs:
   build:
@@ -32,13 +30,14 @@ jobs:
       
   publish:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     needs: build
     steps :
      - name: Print the name of this great yml 
        run: echo Jasser Foking Dridi
   deletePrBranch:
    runs-on: ubuntu-latest
+   if: github.event_name == 'push'
+   needs: publish
    steps:
     - name: Delete pr-* branches
       uses: dawidd6/action-delete-branch@v3

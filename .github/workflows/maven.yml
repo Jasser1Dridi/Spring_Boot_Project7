@@ -40,9 +40,6 @@ jobs:
    if: github.event_name == 'push'
    needs: publish
    steps:
-    delete-branch:
-    runs-on: ubuntu-latest
-    steps:
       - name: delete branch
         uses: SvanBoxel/delete-merged-branch@main
         env:
